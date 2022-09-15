@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.denis.library.models.Book;
 import ru.denis.library.models.Person;
-import ru.denis.library.util.mapper.BookListPeopleMapper;
+import ru.denis.library.util.mapper.BookOwnerMapper;
 import ru.denis.library.util.mapper.BookMapper;
 
 import java.util.List;
@@ -47,7 +47,7 @@ public class BooksDAO {
     public List<Person> getBookOwner(int id) {
         return jdbcTemplate.query("SELECT Person.* FROM Book " +
                 "JOIN person on book.person_id = person.person_id WHERE Book.book_id = ?",
-                new BookListPeopleMapper(), id);
+                new BookOwnerMapper(), id);
     }
 
     public void release(int id) {

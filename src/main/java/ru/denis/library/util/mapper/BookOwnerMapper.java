@@ -6,7 +6,7 @@ import ru.denis.library.models.Person;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BookListPeopleMapper implements RowMapper<Person> {
+public class BookOwnerMapper implements RowMapper<Person> {
 
     @Override
     public Person mapRow(ResultSet rs, int rowNum) throws SQLException {

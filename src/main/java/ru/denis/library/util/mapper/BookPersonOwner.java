@@ -6,7 +6,7 @@ import ru.denis.library.models.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PeopleListBookMapper implements RowMapper<Book> {
+public class BookPersonOwner implements RowMapper<Book> {
 
     //TODO сделать нормальное название класса
 

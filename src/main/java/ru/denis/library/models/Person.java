@@ -2,14 +2,18 @@ package ru.denis.library.models;
 
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+
 
 public class Person {
     private int id;
-    @NotEmpty(message = "Name should not be empty")
+
+    @NotEmpty(message = "Имя не должно быть пустым")
     private String fullName;
 
-    @Max(value = 2008, message = "Age should be greater than 0")
+    @Max(value = 2008, message = "Вам должно быть больше 14, чтобы взять книгу")
+    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
     private int yearOfBirth;
 
     public Person() {

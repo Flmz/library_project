@@ -8,15 +8,26 @@
 
 <p th:text="${person.getFullName()} + ', ' + ${person.getYearOfBirth()}">VALUE</p>
 
-<div th:unless="${#lists.isEmpty(personBooks)}"
-     th:each="books : ${personBooks}">
+<hr/>
+
+<p th:unless="${#lists.isEmpty(personBooks)}">
+    Книги:
+<div th:each="books : ${personBooks}">
+
     <a th:text="${books.getBookName()} + ', ' + ${books.getBookAuthor()} +
-     ', ' + ${books.getYearOfProduction()}">user</a>
+     ', ' + ${books.getYearOfProduction()}">book</a>
 </div>
 
-
+<div th:if="${#lists.isEmpty(personBooks)}">
+    <a>Человек пока не взял ни одной книги</a>
+</div>
 <hr/>
-<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+
+<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+    <input type="submit" value="Редактировать"/>
+</form>
+
+
 <br/>
 <br/>
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">

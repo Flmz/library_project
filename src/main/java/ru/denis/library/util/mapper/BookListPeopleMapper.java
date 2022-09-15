@@ -7,12 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookListPeopleMapper implements RowMapper<Person> {
+
     @Override
     public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Person person = new Person();
 
         person.setFullName(rs.getString("person_name"));
+        person.setYearOfBirth(rs.getInt("person_year_birth"));
+        person.setId(rs.getInt("person_id"));
 
         return person;
     }

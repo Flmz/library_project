@@ -44,8 +44,17 @@ public class BooksDAO {
         jdbcTemplate.update("DELETE FROM Book WHERE book_id=?", id);
     }
 
-    public List<Person> bookList(int id) {
-        return jdbcTemplate.query("SELECT person_name FROM Book " +
-                "JOIN person on person.person_id = book.person_id WHERE book_id = ?", new BookListPeopleMapper(), id);
+    public List<Person> getBookOwner(int id) {
+        return jdbcTemplate.query("SELECT Person.* FROM Book " +
+                "JOIN person on book.person_id = person.person_id WHERE Book.book_id = ?",
+                new BookListPeopleMapper(), id);
+    }
+
+    public void release(int id) {
+        jdbcTemplate.update("UPDATE Book SET person_id=null where book_id=?", id);
+    }
+
+    public void assign(int bookId, Person selectedPerson) {
+        jdbcTemplate.update("UPDATE book SET person_id=? where book_id=?", selectedPerson.getId(), bookId);
     }
 }

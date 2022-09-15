@@ -1,10 +1,14 @@
 package ru.denis.library.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Book {
     private int id;
 
+    @NotEmpty(message = "Имя книги не должно быть пустым")
     private String bookName;
 
+    @NotEmpty(message = "У книги должен быть автор")
     private String bookAuthor;
 
     private int yearOfProduction;
